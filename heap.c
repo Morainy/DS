@@ -11,11 +11,11 @@
  */
 int PARENT (int i);
 /*
- *求取左孩子
+ *求取左孩子索引
  * */
 int LEFT (int i);
 /*
- *求取右孩子
+ *求取右孩子索引
  * */
 int RIGHT(int i);
 /*
