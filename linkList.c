@@ -87,6 +87,48 @@ static inline void list_add_tail (struct list_head *new , struct list_head *head
 {
 	__list_add(new , head->prev , head);
 }
+/**********************************************
+*delete node at head of linklist
+*input:pointer of head
+*output: void
+***********************************************/
+
+static inline void __list_del(struct list_head *prev , struct list_head *next)
+{
+	struct list_head * temp = prev->next;
+	prev->next = temp->next;
+	next->prev = temp->prev;
+	temp->next = NULL;
+	temp->prev = NULL;
+	struct myList * p = container_of(temp , struct myList , list);
+	free(p);
+}
+static inline void list_del_head (struct list_head * head)
+{
+	__list_del(head , head->next->next);
+}
+
+static inline void list_del_tail (struct list_head * head)
+{
+	__list_del(head->prev->prev , head);
+}
+/******************************************************
+*reverse the list
+*input:head of list
+*output:void
+******************************************************/
+static inline void reverse_list (struct list_head * head)
+{
+	struct list_head * temp;
+	struct list_head * p = head;
+	do
+	{
+		temp = p->next;
+		p->next = p->prev;
+		p->prev = temp;
+		p = temp;
+	}while(p != head);
+}
 /************************************************
  *traversal each node of linklist
  *input:pointer of head of linklist
@@ -118,6 +160,12 @@ int main (int argc , char * argv[])
 		list_add ( &(new->list) , &head);
 		//list_add_tail(&(new.list) , &head);
 	}
+	each_of_list(&head);
+	list_del_head(&head);
+	each_of_list(&head);
+	list_del_tail(&head);
+	each_of_list(&head);
+	reverse_list(&head);
 	each_of_list(&head);
 	return 0;
 }
