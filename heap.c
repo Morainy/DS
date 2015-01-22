@@ -46,7 +46,7 @@ int main (int argc,char * argv[])
     printf("\n");
 	return 0;
 }
-int PARENT (int i)
+int PARENT (int i)     //This is an error  ,haven't modified
 {
 	return i/2;
 }
@@ -93,7 +93,7 @@ void BUILD_MAX_HEAP(int *A,int n)
     int i;
 	//int length = HEAP_SIZE(A);
 	//printf("length= %d \n",length);
-    for(i=(n/2);i>0;i--)
+    for(i=(n/2 -1);i>0;i--)            //This is another error, modified
     {
         MAX_HEAPIFY(A,i-1,n);
     }
