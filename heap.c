@@ -96,7 +96,7 @@ void BUILD_MAX_HEAP(int *A,int n)
     int i;
 	//int length = HEAP_SIZE(A);
 	//printf("length= %d \n",length);
-    for(i=(n/2 -1);i>0;i--)            //This is another error, modified
+    for(i=(n/2);i>0;i--)           
     {
         MAX_HEAPIFY(A,i-1,n);
     }
